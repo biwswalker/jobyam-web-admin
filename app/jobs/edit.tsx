@@ -1062,6 +1062,7 @@ const JobEdit: React.FC = () => {
                       <div className="flex-shrink-0">
                         <button
                           type="button"
+                          disabled={userInfo?.role.name.toLowerCase() !== 'supperadmin' && userInfo?.role.name.toLowerCase() !== 'admin'}
                           onClick={() =>
                             handleScoreTypeChange(
                               selectedScoreType === "slide"
@@ -1113,6 +1114,7 @@ const JobEdit: React.FC = () => {
                         <input
                           type="number"
                           name="score"
+                          disabled={userInfo?.role.name.toLowerCase() !== 'supperadmin' && userInfo?.role.name.toLowerCase() !== 'admin'}
                           value={job.score || ''}
                           onChange={(e) =>
                             setJob(prev => prev ? {

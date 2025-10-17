@@ -30,7 +30,7 @@ export default function CreateJob() {
   const [jobTypes, setJobTypes] = useState<JobType[]>([]);
   const [loadingJobTypes, setLoadingJobTypes] = useState(false);
   const [scores, setScores] = useState<ScoreData[]>([]);
-  const [selectedScoreType, setSelectedScoreType] = useState<string>("slide");
+  const [selectedScoreType, setSelectedScoreType] = useState<string>("notslide");
   const [calculatedScore, setCalculatedScore] = useState<number>(0);
   const [showEmptyManpowerModal, setShowEmptyManpowerModal] = useState<boolean>(false);
   const [showEmptyCompanyModal, setShowEmptyCompanyModal] = useState<boolean>(false);
@@ -973,12 +973,13 @@ export default function CreateJob() {
 
                   <div className="mb-4">
                     <label className="block text-gray-700 text-sm font-bold mb-2">
-                      {t('create.score')}
+                      {t('create.score')} {userInfo?.role.name.toLowerCase()}
                     </label>
                     <div className="w-full flex items-center justify-between gap-4">
                       <div className="flex-shrink-0">
                         <button
                           type="button"
+                          disabled={userInfo?.role.name.toLowerCase() !== 'supperadmin' && userInfo?.role.name.toLowerCase() !== 'admin'}
                           onClick={() =>
                             handleScoreTypeChange(
                               selectedScoreType === "slide"
@@ -1030,6 +1031,7 @@ export default function CreateJob() {
                         <input
                           type="number"
                           name="score"
+                          disabled={userInfo?.role.name.toLowerCase() !== 'supperadmin' && userInfo?.role.name.toLowerCase() !== 'admin'}
                           value={formData.score}
                           onChange={(e) =>
                             setFormData(prev => ({
