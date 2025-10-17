@@ -118,5 +118,6 @@ const AlertDialog: React.FC<AlertDialogProps> = ({
     </AnimatePresence>
   );
 };
+// end of AlertDialog component
 
 export default AlertDialog;
