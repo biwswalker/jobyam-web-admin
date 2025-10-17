@@ -973,7 +973,7 @@ export default function CreateJob() {
 
                   <div className="mb-4">
                     <label className="block text-gray-700 text-sm font-bold mb-2">
-                      {t('create.score')} {userInfo?.role.name.toLowerCase()}
+                      {t('create.score')}
                     </label>
                     <div className="w-full flex items-center justify-between gap-4">
                       <div className="flex-shrink-0">
