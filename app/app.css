@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0038A8;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+/* High-tech UI animations */
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Glassmorphism and glowing utility classes */
+.backdrop-blur-md {
+  backdrop-filter: blur(12px);
+}
+.backdrop-blur-xl {
+  backdrop-filter: blur(24px);
+}
+.shadow-glass {
+  box-shadow: 0 8px 32px 0 rgba(56,189,248,0.15), 0 1.5px 6px 0 rgba(0,56,168,0.07);
+}
+.drop-shadow-glow {
+  filter: drop-shadow(0 0 6px #38bdf8cc);
+}
+
+/* Menu/submenu animation keyframes */
+@keyframes menuGlow {
+  0%, 100% { box-shadow: 0 0 8px #38bdf8cc, 0 0 2px #0038A8; }
+  50% { box-shadow: 0 0 24px #38bdf8, 0 0 4px #0038A8; }
+}
+.animate-menu-glow {
+  animation: menuGlow 2.5s ease-in-out infinite;
+}
+@keyframes submenuActiveGlow {
+  0%, 100% { box-shadow: 0 0 8px #bae6fdcc; }
+  50% { box-shadow: 0 0 24px #38bdf8cc; }
+}
+.animate-submenu-active-glow {
+  animation: submenuActiveGlow 2.5s ease-in-out infinite;
+}
+@keyframes fadeInGlass {
+  from { opacity: 0; transform: translateY(12px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.animate-fade-in-glass {
+  animation: fadeInGlass 0.5s cubic-bezier(.4,1.4,.6,1) both;
+}
+@keyframes spinSlow {
+  100% { transform: rotate(360deg); }
+}
+.group-hover\:animate-spin-slow:hover {
+  animation: spinSlow 2.2s linear infinite;
+}
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-10deg); }
+  50% { transform: rotate(10deg); }
+}
+.group-hover\:animate-wiggle:hover {
+  animation: wiggle 0.6s ease-in-out;
+}
+
+/* Digital noise background */
+.bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+html,
+body {
+  @apply bg-white;
+
+  @media (prefers-color-scheme: light) {
+    color-scheme: light;
+  }
+}
+
+/* Tailwind utilities for animations */
+.animate-scanline {
+  animation: scanline 4s linear infinite;
+}
+
+.animate-pulse {
+  animation: pulse 3s ease-in-out infinite;
+}
